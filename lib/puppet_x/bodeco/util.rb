@@ -30,6 +30,7 @@ module PuppetX
         ENV["#{proxy_type}_proxy"] = proxy_server
 
         ENV['SSL_CERT_FILE'] = File.expand_path(File.join(__FILE__, '..', 'cacert.pem')) if Facter.value(:osfamily) == 'windows' && !ENV.key?('SSL_CERT_FILE')
+        Puppet.debug("ENV['SSL_CERT_FILE'] value: #{ENV['SSL_CERT_FILE']}")
       end
 
       def generate_request(uri)
